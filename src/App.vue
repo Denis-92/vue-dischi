@@ -1,26 +1,30 @@
 <template>
-  <div id="app">
+  <div class="container flex flex-column" id="webapp-page">
+    <componentHeader />
+    <componentMain />
   </div>
 </template>
 
+
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import componentHeader from '@/components/componentHeader.vue';
+import componentMain from '@/components/componentMain.vue';
 
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    componentHeader,
+    componentMain,
+  },
 }
 </script>
 
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import '@/assets/style/generics.scss';
+@import '@/assets/style/utilities.scss';
+
+#webapp-page {
+  height: 100vh;
 }
 </style>
