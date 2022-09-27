@@ -1,6 +1,14 @@
 <template>
     <div class="flex flex-grow" id="main-area">
-        <h1>TEST</h1>
+        <div id="cards-container" class="flex flex-center-y flex-center-x">
+            <div class="card flex flex-column flex-center-y">
+                <div>
+                    <img src="@/assets/img/logo-small.jpeg" alt="card" />
+                </div>
+
+                <div>TEST</div>
+            </div>
+        </div>
     </div>
 </template>
   
@@ -16,5 +24,18 @@ export default {
 
 #main-area {
     background-color: $main-bg-color;
+}
+
+#cards-container {
+    margin: 50px 200px;
+}
+
+.card {
+    background-color: $cards-bg-color;
+    color: $cards-text-color;
+    width: calc(100% / 5 - 10px);
+    margin: 5px;
+    height: 40%;
+    padding: 5px;
 }
 </style>  
