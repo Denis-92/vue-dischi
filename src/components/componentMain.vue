@@ -6,7 +6,9 @@
                     <img src="@/assets/img/logo-small.jpeg" alt="card" />
                 </div>
 
-                <div>TEST</div>
+                <div class="card-title">TITLE</div>
+
+                <div>ARTIST</div>
             </div>
         </div>
     </div>
@@ -36,6 +38,13 @@ export default {
     width: calc(100% / 5 - 10px);
     margin: 5px;
     height: 40%;
+}
+
+.card>div {
     padding: 5px;
+}
+
+.card-title {
+    color: white;
 }
 </style>  

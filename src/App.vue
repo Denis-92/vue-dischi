@@ -9,12 +9,28 @@
 <script>
 import componentHeader from '@/components/componentHeader.vue';
 import componentMain from '@/components/componentMain.vue';
+import axios from 'axios';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      artists: []
+    }
+  },
   components: {
     componentHeader,
     componentMain,
+  },
+  created() {
+    console.log('axios collegamento');
+    axios.get('https://flynn.boolean.careers/exercises/api/array/music').then(
+      ({ status, data }) => {
+        if (status === 200) {
+          this.artists = data;
+        }
+      }
+    );
   },
 }
 </script>
