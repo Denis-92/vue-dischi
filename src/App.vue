@@ -1,7 +1,7 @@
 <template>
   <div class="container flex flex-column" id="webapp-page">
     <componentHeader />
-    <componentMain />
+    <componentMain :songs="songs" />
   </div>
 </template>
 
@@ -15,7 +15,8 @@ export default {
   name: 'App',
   data() {
     return {
-      artists: []
+      urlMusic: 'https://flynn.boolean.careers/exercises/api/array/music',
+      songs: []
     }
   },
   components: {
@@ -23,11 +24,11 @@ export default {
     componentMain,
   },
   created() {
-    console.log('axios collegamento');
-    axios.get('https://flynn.boolean.careers/exercises/api/array/music').then(
+    axios.get(this.urlMusic).then(
       ({ status, data }) => {
         if (status === 200) {
-          this.artists = data;
+          this.songs = data.response;
+          console.log(this.artists);
         }
       }
     );

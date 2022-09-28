@@ -1,12 +1,12 @@
 <template>
     <div class="flex flex-grow" id="main-area">
-        <div id="cards-container" class="flex flex-center-y flex-center-x">
-            <div class="card flex flex-column flex-center-y">
+        <div id="cards-container" class="flex flex-center-y flex-center-x flex-wrap">
+            <div class="card flex flex-column flex-center-y" v-for="artist in songs" :key="artist.poster">
                 <div>
                     <img src="@/assets/img/logo-small.jpeg" alt="card" />
                 </div>
 
-                <div class="card-title">TITLE</div>
+                <div class="card-title"> {{ songs.title }} </div>
 
                 <div>ARTIST</div>
             </div>
@@ -17,6 +17,9 @@
 <script>
 export default {
     name: 'componentMain',
+    props: {
+        songs: Array
+    },
 }
 </script>
 
