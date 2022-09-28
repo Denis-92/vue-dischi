@@ -3,12 +3,15 @@
         <div id="cards-container" class="flex flex-center-y flex-center-x flex-wrap">
             <div class="card flex flex-column flex-center-y" v-for="artist in songs" :key="artist.poster">
                 <div>
-                    <img src="@/assets/img/logo-small.jpeg" alt="card" />
+                    <img :src="artist.poster" alt="card" />
                 </div>
 
-                <div class="card-title"> {{ songs.title }} </div>
+                <div class="card-title"> {{ artist.title }} </div>
 
-                <div>ARTIST</div>
+                <div>
+                    <p>{{ artist.author }}</p>
+                    <p>{{ artist.year }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -40,14 +43,16 @@ export default {
     color: $cards-text-color;
     width: calc(100% / 5 - 10px);
     margin: 5px;
-    height: 40%;
+    height: 50%;
 }
 
 .card>div {
     padding: 5px;
+    text-align: center;
 }
 
 .card-title {
     color: white;
+    text-transform: uppercase;
 }
 </style>  
