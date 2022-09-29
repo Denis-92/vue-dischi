@@ -1,7 +1,8 @@
 <template>
     <div>
-        <select v-model="receiveInput">
-            <option v-for="genre in filterSearch" :key="genre"> {{ genre }} </option>
+        <select v-model="receiveInput" @change="filteredContent">
+            <option value="">No Genre Filter</option>
+            <option :value="genre" v-for="genre in filterSearch" :key="genre"> {{ genre }} </option>
         </select>
     </div>
 </template>
@@ -15,6 +16,11 @@ export default {
     data() {
         return {
             receiveInput: ""
+        }
+    },
+    methods: {
+        filteredContent() {
+            this.$emit('genreFiltered', this.receiveInput);
         }
     },
 }

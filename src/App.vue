@@ -28,7 +28,6 @@ export default {
       ({ status, data }) => {
         if (status === 200) {
           this.songs = data.response;
-          console.log(this.artists);
         }
       }
     );

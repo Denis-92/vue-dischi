@@ -1,10 +1,10 @@
 <template>
     <div class="flex flex-grow flex-column flex-center-y" id="main-area">
         <div id="search-bar">
-            <componentSearch :filterSearch="genres" />
+            <componentSearch :filterSearch="genres" @genreFiltered="selectedFilter" />
         </div>
         <div id="cards-container" class="flex flex-center-y flex-center-x flex-wrap">
-            <div class="card flex flex-column flex-center-y" v-for="artist in songs" :key="artist.poster">
+            <div class="card flex flex-column flex-center-y" v-for="artist in showFilteredResult" :key="artist.poster">
                 <div>
                     <img :src="artist.poster" alt="card" />
                 </div>
@@ -25,6 +25,11 @@ import componentSearch from '@/components/componentSearch.vue';
 
 export default {
     name: 'componentMain',
+    data() {
+        return {
+            genreFiltered: '',
+        }
+    },
     props: {
         songs: Array,
     },
@@ -39,10 +44,26 @@ export default {
                     array.push(song.genre);
                 }
             }
-            )
+            );
+            return array;
+        },
+        showFilteredResult() {
+            const array = [];
+            this.songs.forEach(song => {
+                if (this.genreFiltered === song.genre || this.genreFiltered === "") {
+                    array.push(song);
+                }
+            }
+            );
+            //return this.songs;
             return array;
         }
-    }
+    },
+    methods: {
+        selectedFilter(genre) {
+            this.genreFiltered = genre;
+        },
+    },
 }
 </script>
 
